@@ -1,0 +1,122 @@
+/*set colors as custom properties */
+:root {
+  --clr-neutral-900: hsl(207, 19%, 9%);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+  --clr-accent-400: hsl(302, 88%, 64%);
+  --padding: 1.5rem;
+}
+
+/* All */
+* {
+  box-sizing: border-box;
+}
+
+/* body */
+body {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  line-height: 1.6;
+  background: var(--clr-neutral-900);
+  font-family: sans-serif;
+}
+
+/* card */
+.card {
+  color: var(--clr-neutral-100);
+  background-image: url(card-bg.jpeg);
+  background-size: cover;
+  padding: 8rem 0 0;
+  max-width: 35ch;
+  border-radius: 0.75rem;
+  /* for border at bottom */
+  /* card-content.background colors dosen`t have round corners */
+  overflow: hidden;
+
+  transition: transform 700ms ease;
+}
+
+/* style text for better reading */
+.card-body {
+  color: rgb(255 255 255 / 0.85);
+}
+/* card-content animation up */
+.card-content {
+  transform: translateY(60%);
+  transition: transform 500ms ease;
+}
+
+/* zoom card */
+/* if smt inside the card has focus*/
+.card:hover,
+.card:focus-within {
+  transform: scale(1.05);
+}
+
+/* card-content */
+.card-content {
+  padding: var(--padding);
+  background: linear-gradient(
+    hsl(0 0% 0% / 0),
+    hsl(0 0% 0% / 0.2) 10%,
+    hsl(0 0% 0% / 1)
+  );
+}
+
+/* title */
+.card-title {
+  position: relative;
+  width: 100%;
+}
+/* hide line before user focus on card  */
+.card-title::after {
+  transform: scaleX(0);
+}
+
+/* line */
+.card-title::after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  /* start from the left */
+  /* without -1 start not from the first [oint of the card */
+  left: calc(var(--padding) * -1);
+  bottom: -2px;
+  width: 100%;
+  background: var(--clr-accent-400);
+  /* start animation from the left, not center */
+  transform-origin: left;
+  transition: transform 500ms ease;
+}
+
+/* line animation */
+.card:hover .card-title::after {
+  transform: scaleX(1);
+}
+/* card-content animation up */
+.card:hover .card-content,
+.card:focus-within .card-content {
+  transform: translateY(0);
+  transition-delay: 500ms;
+}
+/* mirror title */
+.mirror {
+  transform: scale(-1, 1);
+}
+
+/* button style */
+.button {
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--clr-neutral-900);
+  background-color: var(--clr-accent-400);
+  padding: 0.5em 1.25em;
+  border-radius: 0.25em;
+}
+
+/* change colors of button when a user hovers over it. */
+.button:hover,
+.button:focus {
+  background-color: var(--clr-neutral-100);
+}
