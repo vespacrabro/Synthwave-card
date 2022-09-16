@@ -1,6 +1,6 @@
 # Synthwave Card 
 
-## Live version: link
+## Live version: [Link](https://synthwave-card.vercel.app/)
 
 ## Description
 Simple card with content animation.
